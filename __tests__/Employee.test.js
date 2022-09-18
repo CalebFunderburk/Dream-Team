@@ -1,33 +1,39 @@
-const Employee = require('../lib/Employee')
+// using Employee constructor 
+const Employee = require('../lib/Employee');
 
-test('gets the name, id, and email for an employee', () => {
-    const employee = new Employee('Caleb')
+// creates employee object 
+test('creates an employee object', () => {
+    const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
-    expect(name).toEqual(expect.any(String))
-    expect(id).toEqual(expect.any(String))
-    expect(email).toEqual(expect.any(String))
-})
+    expect(employee.name).toEqual(expect.any(String));
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.any(String));
+});
 
-test('gets an employees name as a string', () => {
-    const employee = new Employee('Caleb')
+// gets id from getId() 
+test('gets employee name', () => {
+    const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
-    expect(employee.getName()).toEqual(expect.any(String))
-})
+    expect(employee.getName()).toEqual(expect.any(String));
+});
 
-test('gets an employees id as a string', () => {
-    const employee = new Employee('Caleb')
+// gets id from getId() 
+test('gets employee ID', () => {
+    const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
-    expect(employee.getId()).toEqual(expect.any(String))
-})
+    expect(employee.getId()).toEqual(expect.any(Number));
+});
 
-test('gets an employees email as a string', () => {
-    const employee = new Employee('Caleb')
+// gets emails from getEmail()
+test('gets employee email', () => {
+    const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
-    expect(employee.getEmail()).toEqual(expect.any(String))
-})
+    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
+});
 
-test('returns the title of employee', () => {
-    const employee = new Employee('Caleb')
+// gets role from getRole()
+test('gets role of employee', () => {
+    const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
-    expect(employee.getRole()).toBe('Employee')
-})
+    expect(employee.getRole()).toEqual("Employee");
+}); 
