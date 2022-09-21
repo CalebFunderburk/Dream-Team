@@ -1,7 +1,7 @@
-// using Employee constructor 
+// External requirments
 const Employee = require('../lib/Employee');
 
-// creates employee object 
+// Test for an emplyee object
 test('creates an employee object', () => {
     const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
@@ -10,28 +10,28 @@ test('creates an employee object', () => {
     expect(employee.email).toEqual(expect.any(String));
 });
 
-// gets id from getId() 
+// Test for a name
 test('gets employee name', () => {
     const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
     expect(employee.getName()).toEqual(expect.any(String));
 });
 
-// gets id from getId() 
+// Test for an ID
 test('gets employee ID', () => {
     const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
     expect(employee.getId()).toEqual(expect.any(Number));
 });
 
-// gets emails from getEmail()
+// Test for an email
 test('gets employee email', () => {
     const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
 });
 
-// gets role from getRole()
+// Tests for role return
 test('gets role of employee', () => {
     const employee = new Employee('Caleb', 36, 'calebfunderburk@icloud.com');
 
