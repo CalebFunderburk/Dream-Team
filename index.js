@@ -5,8 +5,9 @@ const Manager = require('./lib/Manager')
 // Empty array for team members
 teamArray = []
 
-// Inquirer prompts
+// Inquirer prompts code
 const initialPrompt = () => {
+    // Prompts for user to answer
     return inquirer.prompt([
         {
             type: 'input',
@@ -61,12 +62,35 @@ const initialPrompt = () => {
             }
         }
     ])
+    // Use the provided data to create a new Manager object
     .then(managerData => {
         const { name, id, email, officeNumber } = managerData
-        const manager = new Manager (name, id, email ,officeNumber)
+        const manager = new Manager (name, id, email, officeNumber)
         teamArray.push(manager)
         console.log(`Welcome ${managerData.name}!`)
     })
 }
 
+const choicePrompt = () => {
+    // Prompt for user to answer
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'choice',
+            message: 'What would you like to do next?',
+            choices: ['Add Employee', 'Finish']
+        }
+    ])
+    // Conditional to reach the next desired step
+    .then(choiceData => {
+        if(choiceData.choice === 'Add Employee') {
+            employeePrompt()
+        } else {
+            // Generate html if 'Finish' was picked
+        }
+    })
+}
+
+// App initialization
 initialPrompt()
+    .then(choicePrompt)
