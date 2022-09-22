@@ -5,7 +5,7 @@ const Manager = require('./lib/Manager')
 // Empty array for team members
 teamArray = []
 
-// Inquirer prompts code
+// Initial prompt to start team creation
 const initialPrompt = () => {
     // Prompts for user to answer
     return inquirer.prompt([
@@ -71,6 +71,7 @@ const initialPrompt = () => {
     })
 }
 
+// Second prompt to figure what to do next
 const choicePrompt = () => {
     // Prompt for user to answer
     return inquirer.prompt([
@@ -84,9 +85,24 @@ const choicePrompt = () => {
     // Conditional to reach the next desired step
     .then(choiceData => {
         if(choiceData.choice === 'Add Employee') {
+            console.log(choiceData.choice)
             employeePrompt()
         } else {
+            console.log(choiceData.choice)
             // Generate html if 'Finish' was picked
+        }
+    })
+}
+
+// Emplyee creation prompt
+const employeePrompt = () => {
+    // Prompt for user to answer
+    return inquirer.prompt({
+        {
+            type: 'list',
+            name: 'role',
+            message: 'What is the employees current role?',
+            choices: ['Engineer', 'Intern']
         }
     })
 }
