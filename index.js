@@ -1,12 +1,16 @@
 // External requirments
 const inquirer = require('inquirer')
+const Manager = require('./lib/Manager')
+
+// Empty array for team members
+teamArray = []
 
 // Inquirer prompts
-const promptUser = () => {
+const initialPrompt = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'managerName',
+            name: 'name',
             message: 'What is the Managers name?',
             validate: nameInput => {
                 if (nameInput) {
@@ -19,7 +23,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'managerId',
+            name: 'id',
             message: 'What is the Managers employee ID?',
             validate: nameInput => {
                 if (nameInput) {
@@ -32,7 +36,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'managerEmail',
+            name: 'email',
             message: 'What is the Managers email?',
             validate: nameInput => {
                 if (nameInput) {
@@ -45,7 +49,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'managerNumber',
+            name: 'officeNumber',
             message: 'What is the Managers office number?',
             validate: nameInput => {
                 if (nameInput) {
@@ -55,11 +59,14 @@ const promptUser = () => {
                     return false
                 }
             }
-        },
+        }
     ])
+    .then(managerData => {
+        const { name, id, email, officeNumber } = managerData
+        const manager = new Manager (name, id, email ,officeNumber)
+        teamArray.push(manager)
+        console.log(`Welcome ${managerData.name}!`)
+    })
 }
 
-promptUser()
-    .then(data => {
-        console.log(data)
-    })
+initialPrompt()
