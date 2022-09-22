@@ -1,5 +1,8 @@
 // External requirments
 const inquirer = require('inquirer')
+const fs = require('fs')
+
+// Consctuctor functions
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
@@ -9,6 +12,7 @@ teamArray = []
 
 // Initial prompt to start team creation
 const initialPrompt = () => {
+
     // Prompts for user to answer
     return inquirer.prompt([
         {
@@ -68,6 +72,7 @@ const initialPrompt = () => {
     .then(managerData => {
         const { name, id, email, officeNumber } = managerData
         const manager = new Manager (name, id, email, officeNumber)
+
         // Put new object into team array
         teamArray.push(manager)
         console.log(`Welcome ${managerData.name}!`)
@@ -81,6 +86,7 @@ const choicePrompt = () => {
     |MAIN MENU|
     ===========    
     `)
+
     // Prompt for user to answer
     return inquirer.prompt([
         {
@@ -90,6 +96,7 @@ const choicePrompt = () => {
             choices: ['Add Employee', 'Finish']
         }
     ])
+
     // Conditional to reach the next desired step
     .then(choiceData => {
         if(choiceData.choice === 'Add Employee') {
@@ -109,6 +116,7 @@ const employeePrompt = () => {
     |NEW EMPLOYEE|
     ==============
     `)
+
     // Prompt for user to answer
     return inquirer.prompt([
         {
@@ -185,16 +193,19 @@ const employeePrompt = () => {
             }
         },
     ])
+    // Use the provided data to create a the new desired object
     .then(employeeData => {
         let { name, id, email, role, github, school } = employeeData
         let employee
         if (role === 'Engineer') {
             employee = new Engineer (name, id, email, github)
-            console.log(employee)
+            console.log(`${employeeData.name} was succesfully added to the team!`)
         } else if (role === 'Intern') {
             employee = new Intern (name, id, email, school)
-            console.log(employee)
+            console.log(`${employeeData.name} was succesfully added to the team!`)
         }
+
+        // Put new object into team array
         teamArray.push(employee)
         choicePrompt()
     })
