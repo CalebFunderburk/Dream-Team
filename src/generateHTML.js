@@ -16,16 +16,31 @@ const managerHTML = manager => {
 const engineerHTML = engineer => {
     return `
     <div>
-        <span>${engineer.name}</span>
+        <h3>${engineer.name}</h3>
         </br>
-        <span>Engineer</span>
+        <h4>Engineer</h4>
         <ul>
             <li>${engineer.id}</li>
             <a href='mailto:${engineer.email}' target='_blank'><li>Email: ${engineer.email}</li></a>
-            <a href='https://github.com/${engineer.github}' target='_blank'><li>${engineer.github}</li></a>
+            <a href='https://github.com/${engineer.github}' target='_blank'><li>GitHub: ${engineer.github}</li></a>
         </ul>
     </div>
     `
+}
+
+const internHTML = intern => {
+    return `
+    <div>
+        <h3>${intern.name}</h3>
+        </br>
+        <h4>Intern</h4>
+        <ul>
+            <li>${intern.id}</li>
+            <a href='mailto:${intern.email}' target='_blank'><li>Email: ${intern.email}</li></a>
+            <li>School: ${intern.school}</li>
+        </ul>
+    </div>
+    `  
 }
 
 const generateHTML = (data) => {
@@ -50,6 +65,11 @@ const generateHTML = (data) => {
             employeeArray.push(engineerSection)
         }
 
+        // Call the internHTML function if there is one
+        if (role === 'Intern') {
+            const internSection = internHTML(employee)
+            employeeArray.push(internSection)
+        }
 
     }
 

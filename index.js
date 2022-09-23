@@ -151,7 +151,7 @@ const employeePrompt = () => {
                 if (nameInput) {
                     return true
                 } else {
-                    console.log('Please enter the Managers email!')
+                    console.log('Please enter the Employees email!')
                     return false
                 }
             }
@@ -165,7 +165,7 @@ const employeePrompt = () => {
                 if (nameInput) {
                     return true
                 } else {
-                    console.log('Please enter the Managers email!')
+                    console.log('Please enter the Employees GitHub username!')
                     return false
                 }
             }
