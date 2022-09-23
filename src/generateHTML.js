@@ -2,7 +2,6 @@ const managerHTML = manager => {
     return `
     <div>
         <h3>${manager.name}</h3>
-        </br>
         <h4>Manager</h4>
         <ul>
             <li>ID: ${manager.id}</li>
@@ -17,7 +16,6 @@ const engineerHTML = engineer => {
     return `
     <div>
         <h3>${engineer.name}</h3>
-        </br>
         <h4>Engineer</h4>
         <ul>
             <li>${engineer.id}</li>
@@ -32,7 +30,6 @@ const internHTML = intern => {
     return `
     <div>
         <h3>${intern.name}</h3>
-        </br>
         <h4>Intern</h4>
         <ul>
             <li>${intern.id}</li>
@@ -90,10 +87,21 @@ const generateFile = (employeeHTML) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+        crossorigin="anonymous">
         <title>Team Profiles</title>
       </head>
       <body>
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <h1 class="navbar-brand mx-auto">Team Profiles</h1>
+        </div>
+      </nav>
+      <main>
         ${employeeHTML}
+      </main>  
       </body>
     </html>
     `
