@@ -2,6 +2,9 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 
+// Modular functions
+const generateHTML = require('./src/generateHTML')
+
 // Consctuctor functions
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
@@ -96,17 +99,6 @@ const choicePrompt = () => {
             choices: ['Add Employee', 'Finish']
         }
     ])
-
-    // Conditional to reach the next desired step
-    .then(choiceData => {
-        if(choiceData.choice === 'Add Employee') {
-            employeePrompt()
-        } else {
-            console.log(choiceData.choice)
-            // Generate html if 'Finish' was picked
-            showData()
-        }
-    })
 }
 
 // Emplyee creation prompt
@@ -192,10 +184,17 @@ const employeePrompt = () => {
                 }
             }
         },
+        {
+            type: 'confirm',
+            name: 'addEmployee',
+            message: 'Would you like to add another Employee?',
+            default: false
+        }
     ])
+
     // Use the provided data to create a the new desired object
     .then(employeeData => {
-        let { name, id, email, role, github, school } = employeeData
+        let { name, id, email, role, github, school, addEmployee } = employeeData
         let employee
         if (role === 'Engineer') {
             employee = new Engineer (name, id, email, github)
@@ -207,14 +206,33 @@ const employeePrompt = () => {
 
         // Put new object into team array
         teamArray.push(employee)
-        choicePrompt()
+
+        // Run the prompts again if the user wishes to add another employee
+        if (addEmployee) {
+            return employeePrompt(teamArray)
+        } else {
+            showData()
+            return teamArray
+        }
     })
 }
 
+// Use the node file system to create an html page
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => err ? console.log(err) : console.log('HTML file generated!'))
+}
+
+// Test function
 const showData = () => {
     console.log(teamArray)
 }
 
 // App initialization
 initialPrompt()
-    .then(choicePrompt)
+    .then(response => {
+        choicePrompt()
+            .then(response => {
+                response.choice === 'Add Employee' ? employeePrompt() : showData()
+            })
+})
+    
