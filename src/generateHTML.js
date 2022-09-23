@@ -2,11 +2,27 @@ const managerHTML = manager => {
     return `
     <div>
         <span>${manager.name}</span>
-        <span>${manager.role}</span>
+        </br>
+        <span>Manager</span>
         <ul>
             <li>${manager.id}</li>
             <li>${manager.email}</li>
             <li>${manager.officeNumber}</li>
+        </ul>
+    </div>
+    `
+}
+
+const engineerHTML = engineer => {
+    return `
+    <div>
+        <span>${engineer.name}</span>
+        </br>
+        <span>Engineer</span>
+        <ul>
+            <li>${engineer.id}</li>
+            <li>${engineer.email}</li>
+            <li>${engineer.officeNumber}</li>
         </ul>
     </div>
     `
@@ -26,6 +42,12 @@ const generateHTML = (data) => {
         if (role === 'Manager') {
             const managerSection = managerHTML(employee)
             employeeArray.push(managerSection)
+        }
+
+        // Call the engineerHTML function if there is one
+        if (role === 'Engineer') {
+            const engineerSection = engineerHTML(employee)
+            employeeArray.push(engineerSection)
         }
 
 
