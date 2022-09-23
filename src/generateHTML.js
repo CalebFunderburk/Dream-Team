@@ -1,13 +1,13 @@
 const managerHTML = manager => {
     return `
     <div>
-        <span>${manager.name}</span>
+        <h3>${manager.name}</h3>
         </br>
-        <span>Manager</span>
+        <h4>Manager</h4>
         <ul>
-            <li>${manager.id}</li>
-            <li>${manager.email}</li>
-            <li>${manager.officeNumber}</li>
+            <li>ID: ${manager.id}</li>
+            <a href='mailto:${manager.email}' target='_blank'><li>Email: ${manager.email}</li></a>
+            <a href='tel:${manager.officeNumber}' target='_blank'><li>Office Number: ${manager.officeNumber}</li></a>
         </ul>
     </div>
     `
@@ -21,8 +21,8 @@ const engineerHTML = engineer => {
         <span>Engineer</span>
         <ul>
             <li>${engineer.id}</li>
-            <li>${engineer.email}</li>
-            <li>${engineer.officeNumber}</li>
+            <a href='mailto:${engineer.email}' target='_blank'><li>Email: ${engineer.email}</li></a>
+            <a href='https://github.com/${engineer.github}' target='_blank'><li>${engineer.github}</li></a>
         </ul>
     </div>
     `
