@@ -206,16 +206,21 @@ const employeePrompt = () => {
 
         // Put new object into team array
         teamArray.push(employee)
+        console.log(teamArray)
 
         // Run the prompts again if the user wishes to add another employee
-        addEmployee ? employeePrompt(teamArray) : sendData()
+        if (addEmployee) {
+            return employeePrompt(teamArray); 
+        } else {
+            return teamArray;
+        }
     })
 }
 
 // Test function
-const sendData = teamArray => {
-    return generateHTML(teamArray)
-}
+// const sendData = teamArray => {
+//     return generateHTML(teamArray)
+// }
 
 const writeFile = fileContent => {
     fs.writeFile('./dist/index.html', fileContent, err => err ? console.log(err) : console.log('HTML file generated!'))
@@ -227,8 +232,11 @@ initialPrompt()
     .then(teamArray => {
         return generateHTML(teamArray)
     })
-    .then(data => {
-        return writeFile(data)
+    .then(pageHTML => {
+        return writeFile(pageHTML)
+    })
+    .catch(err => {
+        console.log(err)
     })
     // .then(response => {
     //     choicePrompt()

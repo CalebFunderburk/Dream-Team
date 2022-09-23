@@ -18,7 +18,7 @@ const generateHTML = (data) => {
     let employeeArray = []
 
     // Loop through array of employee profiles
-    for (let i = 0; i < data; i++) {
+    for (let i = 0; i < data.length; i++) {
         const employee = data[i]
         const role = employee.getRole()
 
