@@ -208,12 +208,7 @@ const employeePrompt = () => {
         teamArray.push(employee)
 
         // Run the prompts again if the user wishes to add another employee
-        if (addEmployee) {
-            return employeePrompt(teamArray)
-        } else {
-            showData()
-            return teamArray
-        }
+        addEmployee ? employeePrompt(teamArray) : showData(teamArray)
     })
 }
 
@@ -234,5 +229,8 @@ initialPrompt()
             .then(response => {
                 response.choice === 'Add Employee' ? employeePrompt() : showData()
             })
-})
+    })
+    .then(teamArray => {
+        return generateHTML(teamArray)
+    })
     

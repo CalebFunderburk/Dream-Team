@@ -1,4 +1,4 @@
-const managerSection = manager => {
+const managerHTML = manager => {
     return `
     <div>
         <span>${manager.name}</span>
@@ -13,16 +13,29 @@ const managerSection = manager => {
 }
 
 generateHTML = (data) => {
+
     // Array for employee profiles
     let employeeArray = []
 
-    data.forEach(function (value) {
+    // Loop through array of employee profiles
+    for (let i = 0; i < data.length; i++) {
         const employee = data[i]
         const role = employee.getRole()
+
+        // Call the managerHTML function if there is one
+        if (role === 'Manager') {
+            const managerSection = managerHTML(employee)
+            employeeArray.push(managerHTML)
+        }
+
+
     }
-    
-    
-    )
+
+    // Combine the strings
+    const employeeHTML = employeeArray.join('')
+
+    // Return data to the file being generated
+    const generateProfiles = generateFile(employeeHTML)
 }
 
 // Export for usage
