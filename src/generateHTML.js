@@ -12,20 +12,20 @@ const managerHTML = manager => {
     `
 }
 
-generateHTML = (data) => {
+const generateHTML = (data) => {
 
     // Array for employee profiles
     let employeeArray = []
 
     // Loop through array of employee profiles
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data; i++) {
         const employee = data[i]
         const role = employee.getRole()
 
         // Call the managerHTML function if there is one
         if (role === 'Manager') {
             const managerSection = managerHTML(employee)
-            employeeArray.push(managerHTML)
+            employeeArray.push(managerSection)
         }
 
 
@@ -36,7 +36,27 @@ generateHTML = (data) => {
 
     // Return data to the file being generated
     const generateProfiles = generateFile(employeeHTML)
+    return generateProfiles
 }
+
+// Creat html file
+const generateFile = (employeeHTML) => {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Team Profiles</title>
+      </head>
+      <body>
+        ${employeeHTML}
+      </body>
+    </html>
+    `
+}
+
 
 // Export for usage
 module.exports = generateHTML

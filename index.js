@@ -11,7 +11,7 @@ const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
 // Empty array for team members
-teamArray = []
+let teamArray = []
 
 // Initial prompt to start team creation
 const initialPrompt = () => {
@@ -78,28 +78,28 @@ const initialPrompt = () => {
 
         // Put new object into team array
         teamArray.push(manager)
-        console.log(`Welcome ${managerData.name}!`)
+        console.log(`Welcome ${managerData.name}! Lets add some Employees to our team.`)
     })
 }
 
-// Second prompt to figure what to do next
-const choicePrompt = () => {
-    console.log(`
-    ===========
-    |MAIN MENU|
-    ===========    
-    `)
+// // Second prompt to figure what to do next
+// const choicePrompt = () => {
+//     console.log(`
+//     ===========
+//     |MAIN MENU|
+//     ===========    
+//     `)
 
-    // Prompt for user to answer
-    return inquirer.prompt([
-        {
-            type: 'list',
-            name: 'choice',
-            message: 'What would you like to do next?',
-            choices: ['Add Employee', 'Finish']
-        }
-    ])
-}
+//     // Prompt for user to answer
+//     return inquirer.prompt([
+//         {
+//             type: 'list',
+//             name: 'choice',
+//             message: 'What would you like to do next?',
+//             choices: ['Add Employee', 'Finish']
+//         }
+//     ])
+// }
 
 // Emplyee creation prompt
 const employeePrompt = () => {
@@ -208,29 +208,34 @@ const employeePrompt = () => {
         teamArray.push(employee)
 
         // Run the prompts again if the user wishes to add another employee
-        addEmployee ? employeePrompt(teamArray) : showData(teamArray)
+        addEmployee ? employeePrompt(teamArray) : sendData()
     })
 }
 
-// Use the node file system to create an html page
-const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => err ? console.log(err) : console.log('HTML file generated!'))
+// Test function
+const sendData = teamArray => {
+    return generateHTML(teamArray)
 }
 
-// Test function
-const showData = () => {
-    console.log(teamArray)
+const writeFile = fileContent => {
+    fs.writeFile('./dist/index.html', fileContent, err => err ? console.log(err) : console.log('HTML file generated!'))
 }
 
 // App initialization
 initialPrompt()
-    .then(response => {
-        choicePrompt()
-            .then(response => {
-                response.choice === 'Add Employee' ? employeePrompt() : showData()
-            })
-    })
+    .then(employeePrompt)
     .then(teamArray => {
         return generateHTML(teamArray)
     })
-    
+    .then(data => {
+        return writeFile(data)
+    })
+    // .then(response => {
+    //     choicePrompt()
+    //         .then(response => {
+    //             response.choice === 'Add Employee' ? employeePrompt() : sendData() 
+    //         })
+    //         .then(response => { 
+    //             return writeFile(response) 
+    //         })
+    // })
