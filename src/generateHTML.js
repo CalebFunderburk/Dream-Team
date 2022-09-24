@@ -8,8 +8,8 @@ const managerHTML = manager => {
             </div>
             <div class='card-body'>
                 <p>ID: ${manager.id}</p>
-                <a href='mailto:${manager.email}' target='_blank'><p>Email: ${manager.email}</p></a>
-                <a href='tel:${manager.officeNumber}' target='_blank'><p>Office Number: ${manager.officeNumber}</p></a>
+                <p>Email: <a href='mailto:${manager.email}' target='_blank'>${manager.email}</p></a>
+                <p>Office Number: <a href='tel:${manager.officeNumber}' target='_blank'>${manager.officeNumber}</p></a>
             </div>
         </div>
     </div>`
@@ -25,8 +25,8 @@ const engineerHTML = engineer => {
             </div>
             <div class='card-body'>
                 <p>ID: ${engineer.id}</p>
-                <a href='mailto:${engineer.email}' target='_blank'><p>Email: ${engineer.email}</p></a>
-                <a href='https://github.com/${engineer.github}' target='_blank'><p>GitHub: ${engineer.github}</p></a>
+                <p>Email: <a href='mailto:${engineer.email}' target='_blank'>${engineer.email}</p></a>
+                <p>GitHub: <a href='https://github.com/${engineer.github}' target='_blank'>${engineer.github}</p></a>
             </div>
         </div>
     </div>`
@@ -42,7 +42,7 @@ const internHTML = intern => {
             </div>
             <div class='card-body'>
                 <p>ID: ${intern.id}</p>
-                <a href='mailto:${intern.email}' target='_blank'><p>Email: ${intern.email}</p></a>
+                <p>Email: <a href='mailto:${intern.email}' target='_blank'>${intern.email}</p></a>
                 <p>School: ${intern.school}</p>
             </div>
         </div>
@@ -100,6 +100,7 @@ const generateFile = (employeeHTML) => {
         rel='stylesheet'
         integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' 
         crossorigin='anonymous'>
+        <link rel='stylesheet' href='style.css'>
         <title>Dream Team</title>
       </head>
       <body>
