@@ -1,40 +1,52 @@
 const managerHTML = manager => {
     return `
-    <div>
-        <h3 class='fs-3'>${manager.name}</h3>
-        <h4 class='text-muted fs-4 pl-2'>Manager</h4>
-        <ul>
-            <li>ID: ${manager.id}</li>
-            <a href='mailto:${manager.email}' target='_blank'><li>Email: ${manager.email}</li></a>
-            <a href='tel:${manager.officeNumber}' target='_blank'><li>Office Number: ${manager.officeNumber}</li></a>
-        </ul>
+    <div class='col-4 mt-4'>
+        <div class='card h-100'>
+            <div class='card-header'>
+                <h3 class='fs-3'>${manager.name}</h3>
+                <h4 class='text-muted fs-4 pl-2'>Manager</h4>
+            </div>
+            <div class='card-body'>
+                <p>ID: ${manager.id}</p>
+                <a href='mailto:${manager.email}' target='_blank'><p>Email: ${manager.email}</p></a>
+                <a href='tel:${manager.officeNumber}' target='_blank'><p>Office Number: ${manager.officeNumber}</p></a>
+            </div>
+        </div>
     </div>`
 }
 
 const engineerHTML = engineer => {
     return `
-    <div>
-        <h3>${engineer.name}</h3>
-        <h4>Engineer</h4>
-        <ul>
-            <li>${engineer.id}</li>
-            <a href='mailto:${engineer.email}' target='_blank'><li>Email: ${engineer.email}</li></a>
-            <a href='https://github.com/${engineer.github}' target='_blank'><li>GitHub: ${engineer.github}</li></a>
-        </ul>
+    <div class='col-4 mt-4'>
+        <div class='card h-100'>
+            <div class='card-header'>
+                <h3 class='fs-3'>${engineer.name}</h3>
+                <h4 class='text-muted fs-4 pl-2'>Engineer</h4>
+            </div>
+            <div class='card-body'>
+                <p>ID: ${engineer.id}</p>
+                <a href='mailto:${engineer.email}' target='_blank'><p>Email: ${engineer.email}</p></a>
+                <a href='https://github.com/${engineer.github}' target='_blank'><p>GitHub: ${engineer.github}</p></a>
+            </div>
+        </div>
     </div>`
 }
 
 const internHTML = intern => {
     return `
-    <div>
-        <h3>${intern.name}</h3>
-        <h4>Intern</h4>
-        <ul>
-            <li>${intern.id}</li>
-            <a href='mailto:${intern.email}' target='_blank'><li>Email: ${intern.email}</li></a>
-            <li>School: ${intern.school}</li>
-        </ul>
-    </div>`  
+    <div class='col-4 mt-4'>
+        <div class='card h-100'>
+            <div class='card-header'>
+                <h3 class='fs-3'>${intern.name}</h3>
+                <h4 class='text-muted fs-4 pl-2'>Intern</h4>
+            </div>
+            <div class='card-body'>
+                <p>ID: ${intern.id}</p>
+                <a href='mailto:${intern.email}' target='_blank'><p>Email: ${intern.email}</p></a>
+                <p>School: ${intern.school}</p>
+            </div>
+        </div>
+    </div>` 
 }
 
 const generateHTML = (data) => {
@@ -102,11 +114,15 @@ const generateFile = (employeeHTML) => {
                     <h2 class='text-center'>Team Profiles</h2>
                 </div>
             </div>
-            ${employeeHTML}
+            <div class='container'>
+                <div class='row justify-content-center'>
+                    ${employeeHTML}
+                </div>    
+            </div>
         </main>
         <div class='container'>
             <div class='align-items-center'>
-                <h5 class='text-muted text-center'>Thank You for using Dream Team!</h5>
+                <h5 class='text-muted text-center my-3'>Thank You for using Dream Team!</h5>
             </div>
         </div>
       </body>
