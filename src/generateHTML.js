@@ -1,15 +1,14 @@
 const managerHTML = manager => {
     return `
     <div>
-        <h3>${manager.name}</h3>
-        <h4>Manager</h4>
+        <h3 class='fs-3'>${manager.name}</h3>
+        <h4 class='text-muted fs-4 pl-2'>Manager</h4>
         <ul>
             <li>ID: ${manager.id}</li>
             <a href='mailto:${manager.email}' target='_blank'><li>Email: ${manager.email}</li></a>
             <a href='tel:${manager.officeNumber}' target='_blank'><li>Office Number: ${manager.officeNumber}</li></a>
         </ul>
-    </div>
-    `
+    </div>`
 }
 
 const engineerHTML = engineer => {
@@ -22,8 +21,7 @@ const engineerHTML = engineer => {
             <a href='mailto:${engineer.email}' target='_blank'><li>Email: ${engineer.email}</li></a>
             <a href='https://github.com/${engineer.github}' target='_blank'><li>GitHub: ${engineer.github}</li></a>
         </ul>
-    </div>
-    `
+    </div>`
 }
 
 const internHTML = intern => {
@@ -36,8 +34,7 @@ const internHTML = intern => {
             <a href='mailto:${intern.email}' target='_blank'><li>Email: ${intern.email}</li></a>
             <li>School: ${intern.school}</li>
         </ul>
-    </div>
-    `  
+    </div>`  
 }
 
 const generateHTML = (data) => {
@@ -82,29 +79,38 @@ const generateHTML = (data) => {
 const generateFile = (employeeHTML) => {
     return `
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang='en'>
       <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-        crossorigin="anonymous">
-        <title>Team Profiles</title>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' 
+        rel='stylesheet'
+        integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' 
+        crossorigin='anonymous'>
+        <title>Dream Team</title>
       </head>
       <body>
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <h1 class="navbar-brand mx-auto">Team Profiles</h1>
+        <nav class='navbar navbar-light bg-light'>
+            <div class='container-fluid'>
+                <h1 class='navbar-brand fs-1 mx-auto'>Dream Team</h1>
+            </div>
+        </nav>
+        <main>
+            <div class='container'>
+                <div class='align-items-center'>
+                    <h2 class='text-center'>Team Profiles</h2>
+                </div>
+            </div>
+            ${employeeHTML}
+        </main>
+        <div class='container'>
+            <div class='align-items-center'>
+                <h5 class='text-muted text-center'>Thank You for using Dream Team!</h5>
+            </div>
         </div>
-      </nav>
-      <main>
-        ${employeeHTML}
-      </main>  
       </body>
-    </html>
-    `
+    </html>`
 }
 
 

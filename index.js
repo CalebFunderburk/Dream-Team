@@ -78,7 +78,7 @@ const initialPrompt = () => {
 
         // Put new object into team array
         teamArray.push(manager)
-        console.log(`Welcome ${managerData.name}! Lets add some Employees to our team.`)
+        console.log(`Welcome ${managerData.name}! Lets add some Employees to our Dream Team!`)
     })
 }
 
@@ -198,10 +198,10 @@ const employeePrompt = () => {
         let employee
         if (role === 'Engineer') {
             employee = new Engineer (name, id, email, github)
-            console.log(`${employeeData.name} was succesfully added to the team!`)
+            console.log(`${employeeData.name} was succesfully added to the Dream Team!`)
         } else if (role === 'Intern') {
             employee = new Intern (name, id, email, school)
-            console.log(`${employeeData.name} was succesfully added to the team!`)
+            console.log(`${employeeData.name} was succesfully added to the Dream Team!`)
         }
 
         // Put new object into team array
