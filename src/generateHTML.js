@@ -104,9 +104,9 @@ const generateFile = (employeeHTML) => {
         <title>Dream Team</title>
       </head>
       <body>
-        <nav class='navbar navbar-light bg-light'>
+        <nav class='navbar navbar-light bg-success'>
             <div class='container-fluid'>
-                <h1 class='navbar-brand fs-1 mx-auto'>Dream Team</h1>
+                <h1 class='navbar-brand fs-1 mx-auto text-light'>Dream Team</h1>
             </div>
         </nav>
         <main>
@@ -121,9 +121,9 @@ const generateFile = (employeeHTML) => {
                 </div>    
             </div>
         </main>
-        <div class='container'>
+        <div class='container-fluid bg-success'>
             <div class='align-items-center'>
-                <h5 class='text-muted text-center my-3'>Thank You for using Dream Team!</h5>
+                <h5 class='text-light text-center my-3'>Thank You for using Dream Team!</h5>
             </div>
         </div>
       </body>
