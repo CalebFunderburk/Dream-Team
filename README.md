@@ -32,7 +32,7 @@ In order to run this program you will need to:
 
 ## How to use
 
-After gathering the necessary tools mentioned above, open the Dream Team project folder in your code editor. At this time, open your command line terminal and navigate to the root directory for Dream Team. Once you are in the root directory run the following command in your command line: node index.js. This command will begin a series of prompts. Once you have answered all of the prompts, your HTML file will be generated and stored in the "dist" folder located in the root directory for Dream Team.
+After gathering the necessary tools mentioned above, open the Dream Team project folder in your code editor. At this time, open your command line and navigate to the root directory for Dream Team. Once you are in the root directory run the following command in your command line: node index.js. This command will begin a series of prompts. Once you have answered all of the prompts, your HTML file will be generated and stored in the "dist" folder located in the root directory for Dream Team.
 <br/>
 <br/>
 Please refer to this video for additional help on getting started:
