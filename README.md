@@ -12,9 +12,9 @@ As a business manager looking for a way to make a webpage for my team, I would l
 
 ### Features
 
-1. This HTML file displays profiles with employee information that the manager enters themselves.
-2. The information displayed varies for each type of employee you can create.
-3. Users will also be able to click on different elements of the employees portflio in order to be taken to those external links (E.g.: if you click on the Engineer's GitHub username, a new tab will open taking you to their profile.)
+* This HTML file displays profiles with employee information that the manager enters themselves.
+* The information displayed varies for each type of employee you can create.
+* Users will also be able to click on different elements of the employees portflio in order to be taken to those external links (E.g.: if you click on the Engineer's GitHub username, a new tab will open taking you to their profile.)
 
 ## Installation
 
